@@ -1,7 +1,7 @@
 FROM cypress/base:10
 
 USER root
-ENV CHROME_VERSION 77.0.3865.120-1
+ENV CHROME_VERSION 80.0.3987.122-1
 ENV CLOUD_SDK_VERSION=274.0.1
 RUN node --version
 RUN echo "force new chrome here"
