@@ -2,9 +2,9 @@ FROM cypress/base:10
 
 USER root
 ENV CHROME_VERSION 80.0.3987.122-1
+ENV FIREFOX_VERSION 74.0
 ENV CLOUD_SDK_VERSION=274.0.1
 RUN node --version
-RUN echo "force new chrome here"
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends apt-transport-https
@@ -14,7 +14,14 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-stretch" \
   && apt-get update \
   && apt-get install -y --no-install-recommends google-cloud-sdk=${CLOUD_SDK_VERSION}-0 
 
-# install Chromebrowser
+# install Firefox browser
+RUN \
+  wget -O ~/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=${FIREFOX_VERSION}&os=linux64" \
+  tar xjf ~/FirefoxSetup.tar.bz2 -C /opt/ \
+  mkdir /usr/lib/firefox \
+  ln -s /opt/firefox/firefox /usr/lib/firefox/firefox
+
+# install Chrome browser
 RUN \
   wget --no-check-certificate https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb && \
   dpkg -i google-chrome-stable_${CHROME_VERSION}_amd64.deb || apt -y -f install && \
