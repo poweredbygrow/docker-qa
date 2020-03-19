@@ -3,7 +3,7 @@ FROM cypress/base:10
 USER root
 ENV CHROME_VERSION 80.0.3987.122-1
 ENV FIREFOX_VERSION 74.0
-ENV CLOUD_SDK_VERSION=274.0.1
+ENV CLOUD_SDK_VERSION=275.0.0
 RUN node --version
 
 RUN apt-get update \
@@ -16,9 +16,9 @@ RUN export CLOUD_SDK_REPO="cloud-sdk-stretch" \
 
 # install Firefox browser
 RUN \
-  wget -O ~/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=${FIREFOX_VERSION}&os=linux64" \
-  tar xjf ~/FirefoxSetup.tar.bz2 -C /opt/ \
-  mkdir /usr/lib/firefox \
+  wget -O ~/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-${FIREFOX_VERSION}&os=linux64" && \
+  tar xjf ~/FirefoxSetup.tar.bz2 -C /opt/ && \
+  mkdir /usr/lib/firefox && \
   ln -s /opt/firefox/firefox /usr/lib/firefox/firefox
 
 # install Chrome browser
