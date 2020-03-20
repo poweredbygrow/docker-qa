@@ -19,7 +19,7 @@ RUN \
   wget -O ~/FirefoxSetup.tar.bz2 "https://download.mozilla.org/?product=firefox-${FIREFOX_VERSION}&os=linux64" && \
   tar xjf ~/FirefoxSetup.tar.bz2 -C /opt/ && \
   mkdir /usr/lib/firefox && \
-  ln -s /opt/firefox/firefox /usr/lib/firefox/firefox
+  ln -s /opt/firefox/firefox /usr/bin/firefox
 
 # install Chrome browser
 RUN \
