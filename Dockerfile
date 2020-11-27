@@ -1,8 +1,8 @@
 FROM cypress/base:10
 
 USER root
-ENV CHROME_VERSION 85.0.4183.83-1
-ENV FIREFOX_VERSION 81.0.1
+ENV CHROME_VERSION 87.0.4280.66-1
+ENV FIREFOX_VERSION 83.0
 ENV CLOUD_SDK_VERSION=275.0.0
 RUN node --version
 
@@ -49,5 +49,3 @@ ENV TERM xterm
 ENV npm_config_loglevel warn
 # allow installing when the main user is root
 ENV npm_config_unsafe_perm true
-
-ENTRYPOINT ["/bin/sh", "-c" , "echo 127.0.0.1 localhost >> /etc/host"]
