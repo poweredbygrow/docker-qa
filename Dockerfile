@@ -9,7 +9,9 @@ RUN apt-get update
 RUN apt-get install -y fonts-liberation libappindicator3-1 xdg-utils
 
 # install Chrome browser
-ENV CHROME_VERSION 91.0.4472.77
+ENV CHROME_VERSION 94.0.4606.71
+
+RUN apt-get --allow-releaseinfo-change update
 RUN wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" && \
   dpkg -i /usr/src/google-chrome-stable_current_amd64.deb ; \
   apt-get install -f -y && \
@@ -28,7 +30,7 @@ RUN apt-get update && apt-get install -y zip
 RUN apt-get install mplayer -y
 
 # install Firefox browser
-ARG FIREFOX_VERSION=89.0
+ARG FIREFOX_VERSION=94.0.2
 RUN wget --no-verbose --no-check-certificate -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
   && tar -C /opt -xjf /tmp/firefox.tar.bz2 \
   && rm /tmp/firefox.tar.bz2 \
