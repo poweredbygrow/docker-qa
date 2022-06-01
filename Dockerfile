@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt-get install -y fonts-liberation libappindicator3-1 xdg-utils
 
 # install Chrome browser
-ENV CHROME_VERSION 94.0.4606.71
+ENV CHROME_VERSION 102.0.5005.61
 
 RUN apt-get --allow-releaseinfo-change update
 RUN wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" && \
@@ -22,15 +22,12 @@ RUN google-chrome --version
 # https://github.com/SeleniumHQ/docker-selenium/issues/87
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
-# Add zip utility - it comes in very handy
-RUN apt-get update && apt-get install -y zip
-
 # add codecs needed for video playback in firefox
 # https://github.com/cypress-io/cypress-docker-images/issues/150
 RUN apt-get install mplayer -y
 
 # install Firefox browser
-ARG FIREFOX_VERSION=94.0.2
+ARG FIREFOX_VERSION=99.0.1
 RUN wget --no-verbose --no-check-certificate -O /tmp/firefox.tar.bz2 https://download-installer.cdn.mozilla.net/pub/firefox/releases/$FIREFOX_VERSION/linux-x86_64/en-US/firefox-$FIREFOX_VERSION.tar.bz2 \
   && tar -C /opt -xjf /tmp/firefox.tar.bz2 \
   && rm /tmp/firefox.tar.bz2 \
