@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt-get install -y fonts-liberation libappindicator3-1 xdg-utils
 
 # install Chrome browser
-ENV CHROME_VERSION 102.0.5005.61
+ENV CHROME_VERSION 102.0.5005.115
 
 RUN apt-get --allow-releaseinfo-change update
 RUN wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" && \
